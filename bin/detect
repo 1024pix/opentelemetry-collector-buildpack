@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+BUILD_DIR=${1:-}
+
+if [ -f "${BUILD_DIR}/otelcol.yaml" ]; then
+  echo "OpenTelemetry Collector"
+  exit 0
+fi
+
+exit 1

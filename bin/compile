@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+BUILD_DIR=${1:-}
+COLLECTOR_VERSION=`cat ./bin/version`
+COLLECTOR_URL="https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v${COLLECTOR_VERSION}/otelcol_${COLLECTOR_VERSION}_linux_amd64.tar.gz"
+COLLECTOR_DIR="$BUILD_DIR/bin"
+
+mkdir -p $COLLECTOR_DIR
+
+curl --proto '=https' --tlsv1.2 -fOL --retry 3 $COLLECTOR_URL
+tar -xvf otelcol_${COLLECTOR_VERSION}_linux_amd64.tar.gz --directory $COLLECTOR_DIR
