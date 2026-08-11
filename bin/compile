@@ -3,7 +3,9 @@
 set -eu
 
 BUILD_DIR=${1:-}
-COLLECTOR_VERSION=`cat ./bin/version`
+BUILDPACK_DIR=`cd "$(dirname "$0")/.." && pwd`
+
+COLLECTOR_VERSION=`cat $BUILDPACK_DIR/bin/version`
 COLLECTOR_URL="https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v${COLLECTOR_VERSION}/otelcol_${COLLECTOR_VERSION}_linux_amd64.tar.gz"
 COLLECTOR_DIR="$BUILD_DIR/bin"
 
