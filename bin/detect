@@ -2,9 +2,12 @@
 
 BUILD_DIR=${1:-}
 
+echo "[+] Checking for presence of ${BUILD_DIR}/otelcol.yaml file..."
 if [ -f "${BUILD_DIR}/otelcol.yaml" ]; then
   echo "OpenTelemetry Collector"
   exit 0
 fi
+
+echo "[!] Missing ${BUILD_DIR}/otelcol.yaml file "
 
 exit 1
